@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terraform Providers</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        :root {
+            --purple-500: #42215b;
+            --purple-400: #7b00db;
+            --purple-300: #911ced;
+            --purple-200: #a737ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--purple-500), var(--purple-400));
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 1rem;
+            color: white;
+            font-size: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            position: fixed;
+            right: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(66, 33, 91, 0.9);
+            z-index: 0;
+            height: 15px;
+            backdrop-filter: blur(5px);
+            top: -2%;
+        }
+
+        .stats {
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 1rem;
+            width: 100%;
+            background: rgba(66, 33, 91, 0.7);
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+
+        #word-cloud-container {
+            position: fixed;
+            top: 40px;
+            left: 25%;
+            right: 25%;
+            bottom: 80px;
+            width: 100%;
+        }
+
+        .static-word-cloud {
+            position: fixed;
+            top: 40px;
+            bottom: 80px;
+            right: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cloud-word {
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            white-space: nowrap;
+            padding: 2px;
+            margin: 1px;
+        }
+
+        .cloud-word:hover {
+            transform: scale(1.1);
+            z-index: 1000;
+        }
+
+        .alphabet-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: rgba(66, 33, 91, 0.9);
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+
+        .alphabet-filter button {
+            background: var(--purple-200);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .alphabet-filter button:hover {
+            background: var(--purple-300);
+            transform: translateY(-2px);
+        }
+
+        .alphabet-filter button.active {
+            background: var(--purple-400);
+            box-shadow: 0 0 10px var(--purple-200);
+        }
+
+        .provider-info {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            display: none;
+            max-width: 500px;
+            width: 90%;
+            color: var(--purple-500);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .provider-info h2 {
+            margin-bottom: 1rem;
+            color: var(--purple-400);
+        }
+
+        .provider-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .provider-info p.rank {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #7b00db;
+            margin: 0.5rem 0;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(123, 0, 219, 0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--purple-400);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Terraform Providers</h1>
+        <div class="stats" id="stats"></div>
+        <div id="word-cloud-container"></div>
+        <div class="alphabet-filter" id="alphabet-filter"></div>
+        <div class="provider-info" id="provider-info">
+            <button class="close-btn">&times;</button>
+            <h2 id="provider-name"></h2>
+            <p id="provider-description"></p>
+            <p id="provider-downloads"></p>
+            <p id="provider-tier"></p>
+            <p><a id="provider-source" target="_blank"></a></p>
+        </div>
+    </div>
+
+    <script>
+        let providers = [];
+        let currentFilter = '';
+
+        const colorPalette = [
+            '#FFD700', // Gold
+            '#F0E68C', // Khaki
+            '#E6E6FA', // Lavender
+            '#FFA07A', // Light Salmon
+            '#98FB98', // Pale Green
+            '#87CEEB', // Sky Blue
+            '#DDA0DD', // Plum
+            '#F0FFF0', // Honeydew
+            '#FF69B4', // Hot Pink
+            '#00CED1', // Dark Turquoise
+            '#7FFFD4', // Aquamarine
+            '#FFB6C1', // Light Pink
+            '#00FF7F', // Spring Green
+            '#E0FFFF', // Light Cyan
+            '#FFDAB9'  // Peach Puff
+        ];
+
+        function formatNumber(num) {
+            if (num >= 1e9) return (num / 1e9).toFixed(1) + 'B';
+            if (num >= 1e6) return (num / 1e6).toFixed(1) + 'M';
+            if (num >= 1e3) return (num / 1e3).toFixed(1) + 'K';
+            return num.toString();
+        }
+
+        function calculateFontSize(downloads, minDownloads, maxDownloads) {
+            const minSize = 16;
+            const maxSize = 48;
+            
+            const logMin = Math.log(minDownloads || 1);
+            const logMax = Math.log(maxDownloads);
+            const logValue = Math.log(downloads);
+            
+            const scale = (logValue - logMin) / (logMax - logMin);
+            return Math.floor(minSize + (maxSize - minSize) * scale);
+        }
+
+        async function loadData() {
+            const response = await fetch('data/provider-data.json');
+            const data = await response.json();
+            providers = data.data;
+            updateStats();
+            initializeWordCloud();
+            initializeAlphabetFilter();
+        }
+
+        function updateStats() {
+            const totalDownloads = providers.reduce((sum, p) => sum + p.attributes.downloads, 0);
+            const totalProviders = providers.length;
+            document.getElementById('stats').innerHTML = `
+                Total Providers: ${totalProviders} | 
+                Total Downloads: ${formatNumber(totalDownloads)}
+            `;
+        }
+
+        function initializeAlphabetFilter() {
+            const container = document.getElementById('alphabet-filter');
+            
+            // Add Top 5 button
+            const topButton = document.createElement('button');
+            topButton.textContent = 'Top 5';
+            topButton.addEventListener('click', () => filterByTop());
+            container.appendChild(topButton);
+            
+            // Add All button
+            const allButton = document.createElement('button');
+            allButton.textContent = 'All';
+            allButton.classList.add('active');
+            allButton.addEventListener('click', () => filterByLetter(''));
+            container.appendChild(allButton);
+            
+            // Add alphabet buttons
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(letter => {
+                const button = document.createElement('button');
+                button.textContent = letter;
+                button.addEventListener('click', () => filterByLetter(letter));
+                container.appendChild(button);
+            });
+        }
+
+        function filterByTop() {
+            currentFilter = 'top';
+            document.querySelectorAll('.alphabet-filter button').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent === 'Top 5') {
+                    btn.classList.add('active');
+                }
+            });
+            initializeWordCloud();
+        }
+
+        function filterByLetter(letter) {
+            currentFilter = letter;
+            document.querySelectorAll('.alphabet-filter button').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent === letter || (letter === '' && btn.textContent === 'All')) {
+                    btn.classList.add('active');
+                }
+            });
+            initializeWordCloud();
+        }
+
+        function showProviderInfo(provider) {
+            const rank = providers
+                .sort((a, b) => b.attributes.downloads - a.attributes.downloads)
+                .findIndex(p => p.attributes['full-name'] === provider.attributes['full-name']) + 1;
+
+            const info = document.getElementById('provider-info');
+            document.getElementById('provider-name').textContent = provider.attributes['full-name'];
+            
+            // Clear previous rank if exists
+            const existingRank = info.querySelector('.rank');
+            if (existingRank) {
+                existingRank.remove();
+            }
+            
+            // Add rank information
+            const rankText = document.createElement('p');
+            rankText.className = 'rank';
+            rankText.textContent = `Rank #${rank} of ${providers.length}`;
+            document.getElementById('provider-name').after(rankText);
+            
+            document.getElementById('provider-description').textContent = 
+                provider.attributes.description || 'No description available';
+            document.getElementById('provider-downloads').textContent = 
+                `Downloads: ${formatNumber(provider.attributes.downloads)}`;
+            document.getElementById('provider-tier').textContent = `Tier: ${provider.attributes.tier}`;
+            
+            const sourceLink = document.getElementById('provider-source');
+            sourceLink.href = provider.attributes.source;
+            sourceLink.textContent = 'View Source';
+            
+            info.style.display = 'block';
+        }
+
+        function initializeWordCloud() {
+    const container = document.getElementById('word-cloud-container');
+    container.innerHTML = '';
+
+    const cloudContainer = document.createElement('div');
+    cloudContainer.className = 'static-word-cloud';
+    container.appendChild(cloudContainer);
+
+    let filteredProviders = currentFilter === 'top' 
+        ? [...providers].sort((a, b) => b.attributes.downloads - a.attributes.downloads).slice(0, 5)
+        : providers.filter(provider => 
+            currentFilter === '' || provider.attributes.name.toLowerCase().startsWith(currentFilter.toLowerCase())
+        );
+
+    const minDownloads = Math.min(...filteredProviders.map(p => p.attributes.downloads));
+    const maxDownloads = Math.max(...filteredProviders.map(p => p.attributes.downloads));
+
+    // Calculate available space
+    const containerWidth = container.offsetWidth;
+    const containerHeight = container.offsetHeight;
+    const centerX = containerWidth / 2;
+    const centerY = containerHeight / 2;
+
+    // Pre-calculate grid for better positioning
+    const grid = [];
+    const gridSize = 20; // Size of each grid cell
+    const cols = Math.floor(containerWidth / gridSize);
+    const rows = Math.floor(containerHeight / gridSize);
+
+    for (let i = 0; i < rows; i++) {
+        grid[i] = new Array(cols).fill(false);
+    }
+
+    filteredProviders.forEach((provider, index) => {
+        const word = document.createElement('div');
+        word.className = 'cloud-word';
+        word.textContent = provider.attributes['full-name'];
+
+        const fontSize = calculateFontSize(provider.attributes.downloads, minDownloads, maxDownloads);
+        word.style.fontSize = `${fontSize}px`;
+
+        const colorIndex = Math.floor(Math.random() * colorPalette.length);
+        word.style.color = colorPalette[colorIndex];
+
+        // Add to container to get dimensions
+        cloudContainer.appendChild(word);
+        const wordWidth = word.offsetWidth;
+        const wordHeight = word.offsetHeight;
+
+        // Calculate position using a spiral pattern with maximum attempts
+        let angle = (index * 137.508) % 360; // Golden angle for better distribution
+        let radius = 0;
+        let attempts = 0;
+        let positioned = false;
+        const maxAttempts = 200; // Limit attempts to prevent infinite loops
+
+        while (!positioned && attempts < maxAttempts) {
+            const x = centerX + (radius * Math.cos(angle * (Math.PI / 180)));
+            const y = centerY + (radius * Math.sin(angle * (Math.PI / 180)));
+
+            // Check if position is within bounds
+            if (x >= 0 && x <= containerWidth - wordWidth &&
+                y >= 0 && y <= containerHeight - wordHeight) {
+
+                // Convert position to grid coordinates
+                const gridX = Math.floor(x / gridSize);
+                const gridY = Math.floor(y / gridSize);
+                const wordGridWidth = Math.ceil(wordWidth / gridSize);
+                const wordGridHeight = Math.ceil(wordHeight / gridSize);
+
+                // Check if area is free in grid
+                let areaFree = true;
+                for (let gy = Math.max(0, gridY - 1); gy < Math.min(rows, gridY + wordGridHeight + 1); gy++) {
+                    for (let gx = Math.max(0, gridX - 1); gx < Math.min(cols, gridX + wordGridWidth + 1); gx++) {
+                        if (grid[gy] && grid[gy][gx]) {
+                            areaFree = false;
+                            break;
+                        }
+                    }
+                    if (!areaFree) break;
+                }
+
+                if (areaFree) {
+                    // Mark area as occupied
+                    for (let gy = gridY; gy < Math.min(rows, gridY + wordGridHeight); gy++) {
+                        for (let gx = gridX; gx < Math.min(cols, gridX + wordGridWidth); gx++) {
+                            if (grid[gy]) grid[gy][gx] = true;
+                        }
+                    }
+
+                    word.style.left = `${x}px`;
+                    word.style.top = `${y}px`;
+                    positioned = true;
+                }
+            }
+
+            radius += 5;
+            angle += 37; // Add some rotation for better distribution
+            attempts++;
+        }
+
+        if (!positioned) {
+            // If we couldn't position the word, place it somewhere visible
+            word.style.left = `${Math.random() * (containerWidth - wordWidth)}px`;
+            word.style.top = `${Math.random() * (containerHeight - wordHeight)}px`;
+        }
+
+        const shadowIntensity = Math.max(2, fontSize / 4);
+        word.style.textShadow = `
+            0 0 ${shadowIntensity}px ${colorPalette[colorIndex]},
+            0 0 ${shadowIntensity * 2}px rgba(255, 255, 255, 0.3)
+        `;
+
+        word.addEventListener('dblclick', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            showProviderInfo(provider);
+        });
+
+        word.addEventListener('mouseenter', () => {
+            word.style.transform = 'scale(1.1)';
+            word.style.zIndex = '1000';
+        });
+
+        word.addEventListener('mouseleave', () => {
+            word.style.transform = 'scale(1)';
+            word.style.zIndex = '';
+        });
+    });
+}
+// Click outside handler for provider info
+document.addEventListener('click', (event) => {
+            const providerInfo = document.getElementById('provider-info');
+            const isClickInside = providerInfo.contains(event.target);
+            const isTagCloudItem = event.target.classList.contains('cloud-word');
+            
+            if (!isClickInside && !isTagCloudItem && providerInfo.style.display === 'block') {
+                providerInfo.style.display = 'none';
+            }
+        });
+
+        // Prevent clicks inside provider info from bubbling up
+        document.getElementById('provider-info').addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+
+        // Close button handler
+        document.querySelector('.close-btn').addEventListener('click', () => {
+            document.getElementById('provider-info').style.display = 'none';
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            clearTimeout(window.resizeTimeout);
+            window.resizeTimeout = setTimeout(initializeWordCloud, 200);
+        });
+
+        // Initial load
+        window.addEventListener('load', loadData);
+    </script>
+</body>
+</html>
