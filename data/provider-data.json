@@ -1,0 +1,2378 @@
+{
+    "data": [
+        {
+            "type": "providers",
+            "id": "323",
+            "attributes": {
+                "alias": "aws",
+                "description": "Lifecycle management of AWS resources, including  EC2, Lambda, EKS, ECS, VPC, S3, RDS, DynamoDB, and more. This provider is maintained internally by the HashiCorp AWS Provider team.",
+                "downloads": 3621099616,
+                "featured": true,
+                "full-name": "hashicorp/aws",
+                "logo-url": "/images/providers/aws.png",
+                "name": "aws",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-aws",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/323"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "365",
+            "attributes": {
+                "alias": "random",
+                "description": "Supports the use of randomness within Terraform configurations. This is a logical provider, which means that it works entirely within Terraform logic, and does not interact with any other services.",
+                "downloads": 1330411732,
+                "featured": false,
+                "full-name": "hashicorp/random",
+                "logo-url": "/images/providers/hashicorp.svg",
+                "name": "random",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-random",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/365"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "391",
+            "attributes": {
+                "alias": "null",
+                "description": "Provides constructs that intentionally do nothing – useful in various situations to help orchestrate tricky behavior or work around limitations.",
+                "downloads": 1143889340,
+                "featured": false,
+                "full-name": "hashicorp/null",
+                "logo-url": "/images/providers/hashicorp.svg",
+                "name": "null",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-null",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/391"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "354",
+            "attributes": {
+                "alias": "google",
+                "description": "Lifecycle management of GCP resources, including Compute Engine, Cloud Storage, Cloud SDK, Cloud SQL, GKE, BigQuery, Cloud Functions and more. This provider is collaboratively maintained by the Google Terraform Team at Google and the Terraform team at HashiCorp",
+                "downloads": 1040823736,
+                "featured": true,
+                "full-name": "hashicorp/google",
+                "logo-url": "/images/providers/google-cloud.svg",
+                "name": "google",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-google",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/354"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "392",
+            "attributes": {
+                "alias": "template",
+                "description": "This provider has been archived. Please use the `templatefile` function or the `Cloudinit` provider instead. See documentation for more details.",
+                "downloads": 848118997,
+                "featured": false,
+                "full-name": "hashicorp/template",
+                "logo-url": "/images/providers/hashicorp.svg",
+                "name": "template",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-template",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/392"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "362",
+            "attributes": {
+                "alias": "azurerm",
+                "description": "Lifecycle management of Microsoft Azure using the Azure Resource Manager APIs. maintained by the Azure team at Microsoft and the Terraform team at HashiCorp",
+                "downloads": 797253726,
+                "featured": true,
+                "full-name": "hashicorp/azurerm",
+                "logo-url": "/images/providers/azure.png?3",
+                "name": "azurerm",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-azurerm",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/362"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "377",
+            "attributes": {
+                "alias": "kubernetes",
+                "description": "Management of all Kubernetes resources, including Deployments, Services, Custom Resources (CRs and CRDs), Policies, Quotas and more.",
+                "downloads": 609463190,
+                "featured": true,
+                "full-name": "hashicorp/kubernetes",
+                "logo-url": "/images/providers/kubernetes.svg",
+                "name": "kubernetes",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-kubernetes",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/377"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "339",
+            "attributes": {
+                "alias": "google-beta",
+                "description": "",
+                "downloads": 569267049,
+                "featured": false,
+                "full-name": "hashicorp/google-beta",
+                "logo-url": "/images/providers/google-cloud.svg",
+                "name": "google-beta",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": true,
+                "source": "https://github.com/hashicorp/terraform-provider-google-beta",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/339"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "330",
+            "attributes": {
+                "alias": "local",
+                "description": "Used to manage local resources, such as creating files",
+                "downloads": 495404048,
+                "featured": false,
+                "full-name": "hashicorp/local",
+                "logo-url": "/images/providers/hashicorp.svg",
+                "name": "local",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-local",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/330"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "308",
+            "attributes": {
+                "alias": "external",
+                "description": "A special provider that exists to provide an interface between Terraform and external programs – useful for integrating Terraform with a system for which a first-class provider does not exist.",
+                "downloads": 454870150,
+                "featured": false,
+                "full-name": "hashicorp/external",
+                "logo-url": "/images/providers/hashicorp.svg",
+                "name": "external",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-external",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/308"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "545",
+            "attributes": {
+                "alias": "time",
+                "description": "Used to interact with time-based resources. The provider itself has no configuration options.",
+                "downloads": 434907564,
+                "featured": false,
+                "full-name": "hashicorp/time",
+                "logo-url": "/images/providers/hashicorp.svg",
+                "name": "time",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-time",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/545"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "306",
+            "attributes": {
+                "alias": "tls",
+                "description": "Provides utilities for working with Transport Layer Security keys and certificates. It provides resources that allow private keys, certificates and certficate requests to be created as part of a Terraform deployment.",
+                "downloads": 390973947,
+                "featured": false,
+                "full-name": "hashicorp/tls",
+                "logo-url": "/images/providers/hashicorp.svg",
+                "name": "tls",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-tls",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/306"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "347",
+            "attributes": {
+                "alias": "vault",
+                "description": "Allows Terraform to read from, write to, and configure Hashicorp Vault.",
+                "downloads": 380307117,
+                "featured": false,
+                "full-name": "hashicorp/vault",
+                "logo-url": "/images/providers/vault.svg?3",
+                "name": "vault",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-vault",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/347"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "320",
+            "attributes": {
+                "alias": "archive",
+                "description": "The archive provider exposes resources to manage archive files.",
+                "downloads": 366047534,
+                "featured": false,
+                "full-name": "hashicorp/archive",
+                "logo-url": "/images/providers/hashicorp.svg",
+                "name": "archive",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-archive",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/320"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "298",
+            "attributes": {
+                "alias": "helm",
+                "description": "Manage installed Charts in your Kubernetes cluster, in the same way Helm does, through Terraform",
+                "downloads": 292634932,
+                "featured": false,
+                "full-name": "hashicorp/helm",
+                "logo-url": "/images/providers/helm.svg?3",
+                "name": "helm",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-helm",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/298"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "315",
+            "attributes": {
+                "alias": "azuread",
+                "description": "Manage users, groups, service principals, and applications in Azure Active Directory using the Microsoft Graph API. This provider is maintained by the Azure providers team at HashiCorp.",
+                "downloads": 259164730,
+                "featured": false,
+                "full-name": "hashicorp/azuread",
+                "logo-url": "/images/providers/azure.png?3",
+                "name": "azuread",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-azuread",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/315"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "885",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 226870786,
+                "featured": false,
+                "full-name": "DataDog/datadog",
+                "logo-url": "https://avatars3.githubusercontent.com/DataDog",
+                "name": "datadog",
+                "namespace": "DataDog",
+                "owner-name": "",
+                "repository-id": 93446053,
+                "robots-noindex": false,
+                "source": "https://github.com/DataDog/terraform-provider-datadog",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/885"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1333",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 140033750,
+                "featured": false,
+                "full-name": "integrations/github",
+                "logo-url": "https://avatars3.githubusercontent.com/integrations",
+                "name": "github",
+                "namespace": "integrations",
+                "owner-name": "",
+                "repository-id": 93446099,
+                "robots-noindex": false,
+                "source": "https://github.com/integrations/terraform-provider-github",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1333"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "378",
+            "attributes": {
+                "alias": "http",
+                "description": "Utility provider for interacting with generic HTTP servers as part of a Terraform configuration.",
+                "downloads": 136600308,
+                "featured": false,
+                "full-name": "hashicorp/http",
+                "logo-url": "/images/providers/hashicorp.svg",
+                "name": "http",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-http",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/378"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "640",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 123876016,
+                "featured": false,
+                "full-name": "cloudflare/cloudflare",
+                "logo-url": "https://avatars3.githubusercontent.com/cloudflare",
+                "name": "cloudflare",
+                "namespace": "cloudflare",
+                "owner-name": "",
+                "repository-id": 93446113,
+                "robots-noindex": false,
+                "source": "https://github.com/cloudflare/terraform-provider-cloudflare",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/640"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "540",
+            "attributes": {
+                "alias": "cloudinit",
+                "description": "Exposes the cloudinit_config data source which renders a multipart MIME configuration for use with cloud-init (previously available as the template_cloudinit_config resource in the template provider)",
+                "downloads": 108930939,
+                "featured": false,
+                "full-name": "hashicorp/cloudinit",
+                "logo-url": "/images/providers/hashicorp.svg",
+                "name": "cloudinit",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-cloudinit",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/540"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "644",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 99749262,
+                "featured": false,
+                "full-name": "cyrilgdn/postgresql",
+                "logo-url": "https://avatars3.githubusercontent.com/cyrilgdn",
+                "name": "postgresql",
+                "namespace": "cyrilgdn",
+                "owner-name": "",
+                "repository-id": 167666671,
+                "robots-noindex": false,
+                "source": "https://github.com/cyrilgdn/terraform-provider-postgresql",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/644"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "652",
+            "attributes": {
+                "alias": null,
+                "description": "This provider is the best way of managing Kubernetes resources in Terraform, by allowing you to use the thing Kubernetes loves best - yaml!",
+                "downloads": 99533331,
+                "featured": false,
+                "full-name": "gavinbunney/kubectl",
+                "logo-url": "https://avatars3.githubusercontent.com/gavinbunney",
+                "name": "kubectl",
+                "namespace": "gavinbunney",
+                "owner-name": "",
+                "repository-id": 204515734,
+                "robots-noindex": false,
+                "source": "https://github.com/gavinbunney/terraform-provider-kubectl",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/652"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "715",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 80108218,
+                "featured": false,
+                "full-name": "PagerDuty/pagerduty",
+                "logo-url": "https://avatars3.githubusercontent.com/PagerDuty",
+                "name": "pagerduty",
+                "namespace": "PagerDuty",
+                "owner-name": "",
+                "repository-id": 93446054,
+                "robots-noindex": false,
+                "source": "https://github.com/PagerDuty/terraform-provider-pagerduty",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/715"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "583",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 77681572,
+                "featured": false,
+                "full-name": "newrelic/newrelic",
+                "logo-url": "https://avatars3.githubusercontent.com/newrelic",
+                "name": "newrelic",
+                "namespace": "newrelic",
+                "owner-name": "",
+                "repository-id": 93446098,
+                "robots-noindex": false,
+                "source": "https://github.com/newrelic/terraform-provider-newrelic",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/583"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "370",
+            "attributes": {
+                "alias": "tfe",
+                "description": "Provision Terraform Cloud or Terraform Enterprise - with Terraform! Management of organizations, workspaces, teams, variables, run triggers, policy sets, and more. Maintained by the Terraform Cloud team at HashiCorp.",
+                "downloads": 65502221,
+                "featured": false,
+                "full-name": "hashicorp/tfe",
+                "logo-url": "/images/providers/terraform.svg?3",
+                "name": "tfe",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-tfe",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/370"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "947",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 63071340,
+                "featured": false,
+                "full-name": "grafana/grafana",
+                "logo-url": "https://avatars3.githubusercontent.com/grafana",
+                "name": "grafana",
+                "namespace": "grafana",
+                "owner-name": "",
+                "repository-id": 93446086,
+                "robots-noindex": false,
+                "source": "https://github.com/grafana/terraform-provider-grafana",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/947"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "896",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 56879468,
+                "featured": false,
+                "full-name": "gitlabhq/gitlab",
+                "logo-url": "https://avatars3.githubusercontent.com/gitlabhq",
+                "name": "gitlab",
+                "namespace": "gitlabhq",
+                "owner-name": "",
+                "repository-id": 93446122,
+                "robots-noindex": false,
+                "source": "https://github.com/gitlabhq/terraform-provider-gitlab",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/896"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "2912",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 56261208,
+                "featured": false,
+                "full-name": "Azure/azapi",
+                "logo-url": "https://avatars3.githubusercontent.com/Azure",
+                "name": "azapi",
+                "namespace": "Azure",
+                "owner-name": "",
+                "repository-id": 409095307,
+                "robots-noindex": false,
+                "source": "https://github.com/Azure/terraform-provider-azapi",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/2912"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "2834",
+            "attributes": {
+                "alias": null,
+                "description": "Interact with the many resources supported by the Oracle Cloud Infrastructure via the OCI provider APIs.",
+                "downloads": 53937742,
+                "featured": true,
+                "full-name": "oracle/oci",
+                "logo-url": "https://avatars3.githubusercontent.com/oracle",
+                "name": "oci",
+                "namespace": "oracle",
+                "owner-name": "",
+                "repository-id": 72815297,
+                "robots-noindex": false,
+                "source": "https://github.com/oracle/terraform-provider-oci",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/2834"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "360",
+            "attributes": {
+                "alias": "dns",
+                "description": "Supports DNS updates (RFC 2136) and can optionally be configured with secret key based transaction authentication (RFC 2845).",
+                "downloads": 52860716,
+                "featured": false,
+                "full-name": "hashicorp/dns",
+                "logo-url": "/images/providers/hashicorp.svg",
+                "name": "dns",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-dns",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/360"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1785",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 51635199,
+                "featured": false,
+                "full-name": "okta/okta",
+                "logo-url": "https://avatars3.githubusercontent.com/okta",
+                "name": "okta",
+                "namespace": "okta",
+                "owner-name": "",
+                "repository-id": 215379262,
+                "robots-noindex": false,
+                "source": "https://github.com/okta/terraform-provider-okta",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1785"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "3165",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 51299108,
+                "featured": false,
+                "full-name": "databricks/databricks",
+                "logo-url": "https://avatars3.githubusercontent.com/databricks",
+                "name": "databricks",
+                "namespace": "databricks",
+                "owner-name": "",
+                "repository-id": 240289534,
+                "robots-noindex": false,
+                "source": "https://github.com/databricks/terraform-provider-databricks",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/3165"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "2978",
+            "attributes": {
+                "alias": null,
+                "description": "Simplify Apache Kafka Terraform deployment with the Confluent Terraform Provider. Manage Confluent Environments, Kafka Clusters, Kafka Topics, Kafka ACLs, Service Accounts, and more.",
+                "downloads": 48609442,
+                "featured": false,
+                "full-name": "confluentinc/confluent",
+                "logo-url": "https://avatars3.githubusercontent.com/confluentinc",
+                "name": "confluent",
+                "namespace": "confluentinc",
+                "owner-name": "",
+                "repository-id": 486261159,
+                "robots-noindex": false,
+                "source": "https://github.com/confluentinc/terraform-provider-confluent",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/2978"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "307",
+            "attributes": {
+                "alias": "consul",
+                "description": "Exposes resources used to interact with a Consul cluster, such as adding external services or working with the key/value store",
+                "downloads": 47644916,
+                "featured": false,
+                "full-name": "hashicorp/consul",
+                "logo-url": "/images/providers/consul.svg?3",
+                "name": "consul",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-consul",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/307"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "884",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 40768004,
+                "featured": false,
+                "full-name": "terraform-provider-openstack/openstack",
+                "logo-url": "https://avatars3.githubusercontent.com/terraform-provider-openstack",
+                "name": "openstack",
+                "namespace": "terraform-provider-openstack",
+                "owner-name": "",
+                "repository-id": 93446101,
+                "robots-noindex": false,
+                "source": "https://github.com/terraform-provider-openstack/terraform-provider-openstack",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/884"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "775",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 40655354,
+                "featured": false,
+                "full-name": "mrparkers/keycloak",
+                "logo-url": "https://avatars3.githubusercontent.com/mrparkers",
+                "name": "keycloak",
+                "namespace": "mrparkers",
+                "owner-name": "",
+                "repository-id": 147036024,
+                "robots-noindex": false,
+                "source": "https://github.com/mrparkers/terraform-provider-keycloak",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/775"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1916",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 38989696,
+                "featured": false,
+                "full-name": "dmacvicar/libvirt",
+                "logo-url": "https://avatars3.githubusercontent.com/dmacvicar",
+                "name": "libvirt",
+                "namespace": "dmacvicar",
+                "owner-name": "",
+                "repository-id": 52690290,
+                "robots-noindex": false,
+                "source": "https://github.com/dmacvicar/terraform-provider-libvirt",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1916"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "643",
+            "attributes": {
+                "alias": null,
+                "description": "Deploy, update, and manage Atlas configurations as code through Terraform",
+                "downloads": 38206275,
+                "featured": false,
+                "full-name": "mongodb/mongodbatlas",
+                "logo-url": "https://avatars3.githubusercontent.com/mongodb",
+                "name": "mongodbatlas",
+                "namespace": "mongodb",
+                "owner-name": "",
+                "repository-id": 202570697,
+                "robots-noindex": false,
+                "source": "https://github.com/mongodb/terraform-provider-mongodbatlas",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/643"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1137",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 35060539,
+                "featured": false,
+                "full-name": "microsoft/azuredevops",
+                "logo-url": "https://avatars3.githubusercontent.com/microsoft",
+                "name": "azuredevops",
+                "namespace": "microsoft",
+                "owner-name": "",
+                "repository-id": 273244625,
+                "robots-noindex": false,
+                "source": "https://github.com/microsoft/terraform-provider-azuredevops",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1137"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "902",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 33568388,
+                "featured": false,
+                "full-name": "jfrog/artifactory",
+                "logo-url": "https://avatars3.githubusercontent.com/jfrog",
+                "name": "artifactory",
+                "namespace": "jfrog",
+                "owner-name": "",
+                "repository-id": 288509997,
+                "robots-noindex": false,
+                "source": "https://github.com/jfrog/terraform-provider-artifactory",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/902"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "379",
+            "attributes": {
+                "alias": "vsphere",
+                "description": "Lifecycle management of VMware vSphere resources, including Virtual Machines, ESXi Hosts, Datastores, vSwitches, and more. This provider is maintained by the Terraform team at HashiCorp.",
+                "downloads": 32285747,
+                "featured": false,
+                "full-name": "hashicorp/vsphere",
+                "logo-url": "/images/providers/vmware.svg",
+                "name": "vsphere",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-vsphere",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/379"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "552",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 31976878,
+                "featured": false,
+                "full-name": "carlpett/sops",
+                "logo-url": "https://avatars3.githubusercontent.com/carlpett",
+                "name": "sops",
+                "namespace": "carlpett",
+                "owner-name": "",
+                "repository-id": 138219030,
+                "robots-noindex": false,
+                "source": "https://github.com/carlpett/terraform-provider-sops",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/552"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "2622",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 31256062,
+                "featured": false,
+                "full-name": "Ferlab-Ste-Justine/netaddr",
+                "logo-url": "https://avatars3.githubusercontent.com/Ferlab-Ste-Justine",
+                "name": "netaddr",
+                "namespace": "Ferlab-Ste-Justine",
+                "owner-name": "",
+                "repository-id": 444657824,
+                "robots-noindex": false,
+                "source": "https://github.com/Ferlab-Ste-Justine/terraform-provider-netaddr",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/2622"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1387",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 29409237,
+                "featured": false,
+                "full-name": "cloudposse/utils",
+                "logo-url": "https://avatars3.githubusercontent.com/cloudposse",
+                "name": "utils",
+                "namespace": "cloudposse",
+                "owner-name": "",
+                "repository-id": 332788533,
+                "robots-noindex": false,
+                "source": "https://github.com/cloudposse/terraform-provider-utils",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1387"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "2439",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 26968723,
+                "featured": false,
+                "full-name": "Ferlab-Ste-Justine/etcd",
+                "logo-url": "https://avatars3.githubusercontent.com/Ferlab-Ste-Justine",
+                "name": "etcd",
+                "namespace": "Ferlab-Ste-Justine",
+                "owner-name": "",
+                "repository-id": 423886317,
+                "robots-noindex": false,
+                "source": "https://github.com/Ferlab-Ste-Justine/terraform-provider-etcd",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/2439"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "2577",
+            "attributes": {
+                "alias": null,
+                "description": "Configure and manage Elasticstack components such as Elasticsearch, Kibana and more, as code, on Elastic Cloud or on premises.",
+                "downloads": 25927369,
+                "featured": false,
+                "full-name": "elastic/elasticstack",
+                "logo-url": "https://avatars3.githubusercontent.com/elastic",
+                "name": "elasticstack",
+                "namespace": "elastic",
+                "owner-name": "",
+                "repository-id": 421774239,
+                "robots-noindex": false,
+                "source": "https://github.com/elastic/terraform-provider-elasticstack",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/2577"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "3045",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 25614473,
+                "featured": false,
+                "full-name": "Snowflake-Labs/snowflake",
+                "logo-url": "https://avatars3.githubusercontent.com/Snowflake-Labs",
+                "name": "snowflake",
+                "namespace": "Snowflake-Labs",
+                "owner-name": "",
+                "repository-id": 165926555,
+                "robots-noindex": false,
+                "source": "https://github.com/Snowflake-Labs/terraform-provider-snowflake",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/3045"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1088",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 24957327,
+                "featured": false,
+                "full-name": "fluxcd/flux",
+                "logo-url": "https://avatars3.githubusercontent.com/fluxcd",
+                "name": "flux",
+                "namespace": "fluxcd",
+                "owner-name": "",
+                "repository-id": 308589600,
+                "robots-noindex": false,
+                "source": "https://github.com/fluxcd/terraform-provider-flux",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1088"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1745",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 24405712,
+                "featured": false,
+                "full-name": "terraform-aws-modules/http",
+                "logo-url": "https://avatars3.githubusercontent.com/terraform-aws-modules",
+                "name": "http",
+                "namespace": "terraform-aws-modules",
+                "owner-name": "",
+                "repository-id": 364883405,
+                "robots-noindex": false,
+                "source": "https://github.com/terraform-aws-modules/terraform-provider-http",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1745"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1632",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 19785532,
+                "featured": false,
+                "full-name": "1Password/onepassword",
+                "logo-url": "https://avatars3.githubusercontent.com/1Password",
+                "name": "onepassword",
+                "namespace": "1Password",
+                "owner-name": "",
+                "repository-id": 319441206,
+                "robots-noindex": false,
+                "source": "https://github.com/1Password/terraform-provider-onepassword",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1632"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1127",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 18870835,
+                "featured": false,
+                "full-name": "kreuzwerker/docker",
+                "logo-url": "https://avatars3.githubusercontent.com/kreuzwerker",
+                "name": "docker",
+                "namespace": "kreuzwerker",
+                "owner-name": "",
+                "repository-id": 310596153,
+                "robots-noindex": false,
+                "source": "https://github.com/kreuzwerker/terraform-provider-docker",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1127"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "690",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 18701878,
+                "featured": true,
+                "full-name": "aliyun/alicloud",
+                "logo-url": "https://avatars3.githubusercontent.com/aliyun",
+                "name": "alicloud",
+                "namespace": "aliyun",
+                "owner-name": "",
+                "repository-id": 93446083,
+                "robots-noindex": false,
+                "source": "https://github.com/aliyun/terraform-provider-alicloud",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/690"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "635",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 18529448,
+                "featured": false,
+                "full-name": "opsgenie/opsgenie",
+                "logo-url": "https://avatars3.githubusercontent.com/opsgenie",
+                "name": "opsgenie",
+                "namespace": "opsgenie",
+                "owner-name": "",
+                "repository-id": 93446035,
+                "robots-noindex": false,
+                "source": "https://github.com/opsgenie/terraform-provider-opsgenie",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/635"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1203",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 18498487,
+                "featured": false,
+                "full-name": "vancluever/acme",
+                "logo-url": "https://avatars3.githubusercontent.com/vancluever",
+                "name": "acme",
+                "namespace": "vancluever",
+                "owner-name": "",
+                "repository-id": 143914228,
+                "robots-noindex": false,
+                "source": "https://github.com/vancluever/terraform-provider-acme",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1203"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "566",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 17965771,
+                "featured": false,
+                "full-name": "Mongey/kafka",
+                "logo-url": "https://avatars3.githubusercontent.com/Mongey",
+                "name": "kafka",
+                "namespace": "Mongey",
+                "owner-name": "",
+                "repository-id": 103748731,
+                "robots-noindex": false,
+                "source": "https://github.com/Mongey/terraform-provider-kafka",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/566"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "614",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 17527893,
+                "featured": false,
+                "full-name": "rancher/rancher2",
+                "logo-url": "https://avatars3.githubusercontent.com/rancher",
+                "name": "rancher2",
+                "namespace": "rancher",
+                "owner-name": "",
+                "repository-id": 186468979,
+                "robots-noindex": false,
+                "source": "https://github.com/rancher/terraform-provider-rancher2",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/614"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "602",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 16956163,
+                "featured": false,
+                "full-name": "tencentcloudstack/tencentcloud",
+                "logo-url": "https://avatars3.githubusercontent.com/tencentcloudstack",
+                "name": "tencentcloud",
+                "namespace": "tencentcloudstack",
+                "owner-name": "",
+                "repository-id": 150627051,
+                "robots-noindex": false,
+                "source": "https://github.com/tencentcloudstack/terraform-provider-tencentcloud",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/602"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1283",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 16173815,
+                "featured": false,
+                "full-name": "rollbar/rollbar",
+                "logo-url": "https://avatars3.githubusercontent.com/rollbar",
+                "name": "rollbar",
+                "namespace": "rollbar",
+                "owner-name": "",
+                "repository-id": 296401542,
+                "robots-noindex": false,
+                "source": "https://github.com/rollbar/terraform-provider-rollbar",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1283"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "335",
+            "attributes": {
+                "alias": "nomad",
+                "description": "Exposes resources to interact with a HashiCorp Nomad cluster.",
+                "downloads": 15952217,
+                "featured": false,
+                "full-name": "hashicorp/nomad",
+                "logo-url": "/images/providers/nomad.svg?3",
+                "name": "nomad",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-nomad",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/335"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1262",
+            "attributes": {
+                "alias": null,
+                "description": "Provision, manage and configure Elastic Stack Deployments as code on Elastic Cloud.",
+                "downloads": 15817994,
+                "featured": false,
+                "full-name": "elastic/ec",
+                "logo-url": "https://avatars3.githubusercontent.com/elastic",
+                "name": "ec",
+                "namespace": "elastic",
+                "owner-name": "",
+                "repository-id": 263585905,
+                "robots-noindex": false,
+                "source": "https://github.com/elastic/terraform-provider-ec",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1262"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "779",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 15140698,
+                "featured": false,
+                "full-name": "IBM-Cloud/ibm",
+                "logo-url": "https://avatars3.githubusercontent.com/IBM-Cloud",
+                "name": "ibm",
+                "namespace": "IBM-Cloud",
+                "owner-name": "",
+                "repository-id": 94801963,
+                "robots-noindex": false,
+                "source": "https://github.com/IBM-Cloud/terraform-provider-ibm",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/779"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "2760",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 15054589,
+                "featured": false,
+                "full-name": "auth0/auth0",
+                "logo-url": "https://avatars3.githubusercontent.com/auth0",
+                "name": "auth0",
+                "namespace": "auth0",
+                "owner-name": "",
+                "repository-id": 454465421,
+                "robots-noindex": false,
+                "source": "https://github.com/auth0/terraform-provider-auth0",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/2760"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "3049",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 14654594,
+                "featured": false,
+                "full-name": "alekc/kubectl",
+                "logo-url": "https://avatars3.githubusercontent.com/alekc",
+                "name": "kubectl",
+                "namespace": "alekc",
+                "owner-name": "",
+                "repository-id": 495050354,
+                "robots-noindex": false,
+                "source": "https://github.com/alekc/terraform-provider-kubectl",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/3049"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "2242",
+            "attributes": {
+                "alias": "awscc",
+                "description": "Lifecycle management of AWS resources powered by the AWS Cloud Control API. This provider is fully generated from the available CloudFormation resource definitions and is maintained internally by the HashiCorp AWS Provider team.\n",
+                "downloads": 14545806,
+                "featured": false,
+                "full-name": "hashicorp/awscc",
+                "logo-url": "/images/providers/aws.png",
+                "name": "awscc",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": true,
+                "source": "https://github.com/hashicorp/terraform-provider-awscc",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/2242"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "573",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 12812079,
+                "featured": false,
+                "full-name": "jianyuan/sentry",
+                "logo-url": "https://avatars3.githubusercontent.com/jianyuan",
+                "name": "sentry",
+                "namespace": "jianyuan",
+                "owner-name": "",
+                "repository-id": 65609526,
+                "robots-noindex": false,
+                "source": "https://github.com/jianyuan/terraform-provider-sentry",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/573"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "626",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 12711617,
+                "featured": false,
+                "full-name": "phillbaker/elasticsearch",
+                "logo-url": "https://avatars3.githubusercontent.com/phillbaker",
+                "name": "elasticsearch",
+                "namespace": "phillbaker",
+                "owner-name": "",
+                "repository-id": 100824464,
+                "robots-noindex": false,
+                "source": "https://github.com/phillbaker/terraform-provider-elasticsearch",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/626"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "567",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 12420376,
+                "featured": false,
+                "full-name": "aztfmod/azurecaf",
+                "logo-url": "https://avatars3.githubusercontent.com/aztfmod",
+                "name": "azurecaf",
+                "namespace": "aztfmod",
+                "owner-name": "",
+                "repository-id": 248703055,
+                "robots-noindex": false,
+                "source": "https://github.com/aztfmod/terraform-provider-azurecaf",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/567"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "709",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 12345820,
+                "featured": false,
+                "full-name": "ns1-terraform/ns1",
+                "logo-url": "https://avatars3.githubusercontent.com/ns1-terraform",
+                "name": "ns1",
+                "namespace": "ns1-terraform",
+                "owner-name": "",
+                "repository-id": 93446320,
+                "robots-noindex": false,
+                "source": "https://github.com/ns1-terraform/terraform-provider-ns1",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/709"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "621",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 11858547,
+                "featured": false,
+                "full-name": "SumoLogic/sumologic",
+                "logo-url": "https://avatars3.githubusercontent.com/SumoLogic",
+                "name": "sumologic",
+                "namespace": "SumoLogic",
+                "owner-name": "",
+                "repository-id": 254212870,
+                "robots-noindex": false,
+                "source": "https://github.com/SumoLogic/terraform-provider-sumologic",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/621"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1001",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 11479127,
+                "featured": false,
+                "full-name": "cyrilgdn/rabbitmq",
+                "logo-url": "https://avatars3.githubusercontent.com/cyrilgdn",
+                "name": "rabbitmq",
+                "namespace": "cyrilgdn",
+                "owner-name": "",
+                "repository-id": 303334744,
+                "robots-noindex": false,
+                "source": "https://github.com/cyrilgdn/terraform-provider-rabbitmq",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1001"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "3402",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 9997513,
+                "featured": false,
+                "full-name": "glesys/glesys",
+                "logo-url": "https://avatars3.githubusercontent.com/glesys",
+                "name": "glesys",
+                "namespace": "glesys",
+                "owner-name": "",
+                "repository-id": 187179388,
+                "robots-noindex": false,
+                "source": "https://github.com/glesys/terraform-provider-glesys",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/3402"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "915",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 9982533,
+                "featured": false,
+                "full-name": "yandex-cloud/yandex",
+                "logo-url": "https://avatars3.githubusercontent.com/yandex-cloud",
+                "name": "yandex",
+                "namespace": "yandex-cloud",
+                "owner-name": "",
+                "repository-id": 171947379,
+                "robots-noindex": false,
+                "source": "https://github.com/yandex-cloud/terraform-provider-yandex",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/915"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1488",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 9919400,
+                "featured": false,
+                "full-name": "petoju/mysql",
+                "logo-url": "https://avatars3.githubusercontent.com/petoju",
+                "name": "mysql",
+                "namespace": "petoju",
+                "owner-name": "",
+                "repository-id": 339200406,
+                "robots-noindex": false,
+                "source": "https://github.com/petoju/terraform-provider-mysql",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1488"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1934",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 9831703,
+                "featured": false,
+                "full-name": "cloudposse/awsutils",
+                "logo-url": "https://avatars3.githubusercontent.com/cloudposse",
+                "name": "awsutils",
+                "namespace": "cloudposse",
+                "owner-name": "",
+                "repository-id": 379636792,
+                "robots-noindex": false,
+                "source": "https://github.com/cloudposse/terraform-provider-awsutils",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1934"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1131",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 9408343,
+                "featured": false,
+                "full-name": "betr-io/mssql",
+                "logo-url": "https://avatars3.githubusercontent.com/betr-io",
+                "name": "mssql",
+                "namespace": "betr-io",
+                "owner-name": "",
+                "repository-id": 303974331,
+                "robots-noindex": false,
+                "source": "https://github.com/betr-io/terraform-provider-mssql",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1131"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "660",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 9187246,
+                "featured": false,
+                "full-name": "scottwinkler/shell",
+                "logo-url": "https://avatars3.githubusercontent.com/scottwinkler",
+                "name": "shell",
+                "namespace": "scottwinkler",
+                "owner-name": "",
+                "repository-id": 136586484,
+                "robots-noindex": false,
+                "source": "https://github.com/scottwinkler/terraform-provider-shell",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/660"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "2173",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 8796151,
+                "featured": false,
+                "full-name": "Mastercard/restapi",
+                "logo-url": "https://avatars3.githubusercontent.com/Mastercard",
+                "name": "restapi",
+                "namespace": "Mastercard",
+                "owner-name": "",
+                "repository-id": 131317436,
+                "robots-noindex": false,
+                "source": "https://github.com/Mastercard/terraform-provider-restapi",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/2173"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "4521",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 8529772,
+                "featured": false,
+                "full-name": "nekottyo/jsonschema",
+                "logo-url": "https://avatars3.githubusercontent.com/nekottyo",
+                "name": "jsonschema",
+                "namespace": "nekottyo",
+                "owner-name": "",
+                "repository-id": 690029507,
+                "robots-noindex": false,
+                "source": "https://github.com/nekottyo/terraform-provider-jsonschema",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/4521"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1399",
+            "attributes": {
+                "alias": "hcp",
+                "description": "HashiCorp Cloud Platform (HCP) is HashiCorp's first-party platform for hosting our products as managed services. HCP includes shared platform functionality like login, access control, and billing, and can be managed via web portal interface or Terraform provider. It primarily serves to enable easily launching and running services like Consul and Vault, which will be deployed into HashiCorp Virtual Networks (HVNs) and connected to your infrastructure resources.",
+                "downloads": 8205632,
+                "featured": false,
+                "full-name": "hashicorp/hcp",
+                "logo-url": "/images/providers/hcp.svg",
+                "name": "hcp",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-hcp",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1399"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "642",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 7907717,
+                "featured": false,
+                "full-name": "fastly/fastly",
+                "logo-url": "https://avatars3.githubusercontent.com/fastly",
+                "name": "fastly",
+                "namespace": "fastly",
+                "owner-name": "",
+                "repository-id": 93446321,
+                "robots-noindex": false,
+                "source": "https://github.com/fastly/terraform-provider-fastly",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/642"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "3961",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 7656373,
+                "featured": false,
+                "full-name": "opensearch-project/opensearch",
+                "logo-url": "https://avatars3.githubusercontent.com/opensearch-project",
+                "name": "opensearch",
+                "namespace": "opensearch-project",
+                "owner-name": "",
+                "repository-id": 542285435,
+                "robots-noindex": false,
+                "source": "https://github.com/opensearch-project/terraform-provider-opensearch",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/3961"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "639",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 7490529,
+                "featured": false,
+                "full-name": "heroku/heroku",
+                "logo-url": "https://avatars3.githubusercontent.com/heroku",
+                "name": "heroku",
+                "namespace": "heroku",
+                "owner-name": "",
+                "repository-id": 93446103,
+                "robots-noindex": false,
+                "source": "https://github.com/heroku/terraform-provider-heroku",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/639"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "646",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 7381107,
+                "featured": false,
+                "full-name": "launchdarkly/launchdarkly",
+                "logo-url": "https://avatars3.githubusercontent.com/launchdarkly",
+                "name": "launchdarkly",
+                "namespace": "launchdarkly",
+                "owner-name": "",
+                "repository-id": 216103432,
+                "robots-noindex": false,
+                "source": "https://github.com/launchdarkly/terraform-provider-launchdarkly",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/646"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "649",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 7207901,
+                "featured": false,
+                "full-name": "strongdm/sdm",
+                "logo-url": "https://avatars3.githubusercontent.com/strongdm",
+                "name": "sdm",
+                "namespace": "strongdm",
+                "owner-name": "",
+                "repository-id": 245226493,
+                "robots-noindex": false,
+                "source": "https://github.com/strongdm/terraform-provider-sdm",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/649"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1069",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 7006016,
+                "featured": false,
+                "full-name": "spotinst/spotinst",
+                "logo-url": "https://avatars3.githubusercontent.com/spotinst",
+                "name": "spotinst",
+                "namespace": "spotinst",
+                "owner-name": "",
+                "repository-id": 93446112,
+                "robots-noindex": false,
+                "source": "https://github.com/spotinst/terraform-provider-spotinst",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1069"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1833",
+            "attributes": {
+                "alias": "googleworkspace",
+                "description": "",
+                "downloads": 6981454,
+                "featured": false,
+                "full-name": "hashicorp/googleworkspace",
+                "logo-url": "/images/providers/googleworkspace.png",
+                "name": "googleworkspace",
+                "namespace": "hashicorp",
+                "owner-name": "",
+                "robots-noindex": false,
+                "source": "https://github.com/hashicorp/terraform-provider-googleworkspace",
+                "tier": "official",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1833"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "2806",
+            "attributes": {
+                "alias": null,
+                "description": "Coder is a self-hosted remote development platform. Shifting software development from local machines to the cloud. Onboard new developers in minutes, build code on powerful servers—all while keeping source code and data secure and keeping your developers in flow.",
+                "downloads": 6963848,
+                "featured": false,
+                "full-name": "coder/coder",
+                "logo-url": "https://avatars3.githubusercontent.com/coder",
+                "name": "coder",
+                "namespace": "coder",
+                "owner-name": "",
+                "repository-id": 462891362,
+                "robots-noindex": false,
+                "source": "https://github.com/coder/terraform-provider-coder",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/2806"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1253",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 6922989,
+                "featured": false,
+                "full-name": "dynatrace-oss/dynatrace",
+                "logo-url": "https://avatars3.githubusercontent.com/dynatrace-oss",
+                "name": "dynatrace",
+                "namespace": "dynatrace-oss",
+                "owner-name": "",
+                "repository-id": 319664200,
+                "robots-noindex": false,
+                "source": "https://github.com/dynatrace-oss/terraform-provider-dynatrace",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1253"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "605",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 6904069,
+                "featured": false,
+                "full-name": "digitalocean/digitalocean",
+                "logo-url": "https://avatars3.githubusercontent.com/digitalocean",
+                "name": "digitalocean",
+                "namespace": "digitalocean",
+                "owner-name": "",
+                "repository-id": 93446088,
+                "robots-noindex": false,
+                "source": "https://github.com/digitalocean/terraform-provider-digitalocean",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/605"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "923",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 6895159,
+                "featured": false,
+                "full-name": "aiven/aiven",
+                "logo-url": "https://avatars3.githubusercontent.com/aiven",
+                "name": "aiven",
+                "namespace": "aiven",
+                "owner-name": "",
+                "repository-id": 82976691,
+                "robots-noindex": false,
+                "source": "https://github.com/aiven/terraform-provider-aiven",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/923"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "625",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 6834229,
+                "featured": false,
+                "full-name": "splunk-terraform/signalfx",
+                "logo-url": "https://avatars3.githubusercontent.com/splunk-terraform",
+                "name": "signalfx",
+                "namespace": "splunk-terraform",
+                "owner-name": "",
+                "repository-id": 195472260,
+                "robots-noindex": false,
+                "source": "https://github.com/splunk-terraform/terraform-provider-signalfx",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/625"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "604",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 6629211,
+                "featured": false,
+                "full-name": "linode/linode",
+                "logo-url": "https://avatars3.githubusercontent.com/linode",
+                "name": "linode",
+                "namespace": "linode",
+                "owner-name": "",
+                "repository-id": 153338661,
+                "robots-noindex": false,
+                "source": "https://github.com/linode/terraform-provider-linode",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/604"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1670",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 6609862,
+                "featured": false,
+                "full-name": "infobloxopen/infoblox",
+                "logo-url": "https://avatars3.githubusercontent.com/infobloxopen",
+                "name": "infoblox",
+                "namespace": "infobloxopen",
+                "owner-name": "",
+                "repository-id": 122335237,
+                "robots-noindex": false,
+                "source": "https://github.com/infobloxopen/terraform-provider-infoblox",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1670"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "986",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 6555239,
+                "featured": false,
+                "full-name": "lacework/lacework",
+                "logo-url": "https://avatars3.githubusercontent.com/lacework",
+                "name": "lacework",
+                "namespace": "lacework",
+                "owner-name": "",
+                "repository-id": 241933956,
+                "robots-noindex": false,
+                "source": "https://github.com/lacework/terraform-provider-lacework",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/986"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "2070",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 6215779,
+                "featured": false,
+                "full-name": "goauthentik/authentik",
+                "logo-url": "https://avatars3.githubusercontent.com/goauthentik",
+                "name": "authentik",
+                "namespace": "goauthentik",
+                "owner-name": "",
+                "repository-id": 386218898,
+                "robots-noindex": false,
+                "source": "https://github.com/goauthentik/terraform-provider-authentik",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/2070"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "4959",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 6212670,
+                "featured": false,
+                "full-name": "NitriKx/postgresql",
+                "logo-url": "https://avatars3.githubusercontent.com/NitriKx",
+                "name": "postgresql",
+                "namespace": "NitriKx",
+                "owner-name": "",
+                "repository-id": 751509019,
+                "robots-noindex": false,
+                "source": "https://github.com/NitriKx/terraform-provider-postgresql",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/4959"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "3252",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 6198652,
+                "featured": false,
+                "full-name": "juju/juju",
+                "logo-url": "https://avatars3.githubusercontent.com/juju",
+                "name": "juju",
+                "namespace": "juju",
+                "owner-name": "",
+                "repository-id": 497995184,
+                "robots-noindex": false,
+                "source": "https://github.com/juju/terraform-provider-juju",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/3252"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "598",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 5834180,
+                "featured": false,
+                "full-name": "hetznercloud/hcloud",
+                "logo-url": "https://avatars3.githubusercontent.com/hetznercloud",
+                "name": "hcloud",
+                "namespace": "hetznercloud",
+                "owner-name": "",
+                "repository-id": 136213126,
+                "robots-noindex": false,
+                "source": "https://github.com/hetznercloud/terraform-provider-hcloud",
+                "tier": "partner",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/598"
+            }
+        },
+        {
+            "type": "providers",
+            "id": "1056",
+            "attributes": {
+                "alias": null,
+                "description": "",
+                "downloads": 5781902,
+                "featured": false,
+                "full-name": "logdna/logdna",
+                "logo-url": "https://avatars3.githubusercontent.com/logdna",
+                "name": "logdna",
+                "namespace": "logdna",
+                "owner-name": "",
+                "repository-id": 304824230,
+                "robots-noindex": false,
+                "source": "https://github.com/logdna/terraform-provider-logdna",
+                "tier": "community",
+                "unlisted": false,
+                "warning": ""
+            },
+            "links": {
+                "self": "/v2/providers/1056"
+            }
+        }
+    ]
+}
