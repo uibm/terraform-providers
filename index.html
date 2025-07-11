@@ -6,181 +6,150 @@
     <title>Terraform Providers</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        
         :root {
-            --purple-500: #42215b;
-            --purple-400: #7b00db;
-            --purple-300: #911ced;
-            --purple-200: #a737ff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+        --bg-dark: #1e1e2f;
+        --accent: #5a65ea;
+        --accent-soft: #8f95f9;
+        --text-light: #f5f5f5;
+        --text-muted: #cccccc;
+        --card-bg: rgba(255, 255, 255, 0.08);
         }
 
         body {
-            background: linear-gradient(135deg, var(--purple-500), var(--purple-400));
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: white;
-            overflow: hidden;
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background-color: var(--bg-dark);
+        color: var(--text-light);
+        overflow: hidden;
         }
 
         h1 {
-            text-align: center;
-            padding: 1rem;
-            color: white;
-            font-size: 1rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            position: fixed;
-            right: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(66, 33, 91, 0.9);
-            z-index: 0;
-            height: 15px;
-            backdrop-filter: blur(5px);
-            top: -2%;
+        font-size: 1.25rem;
+        text-align: center;
+        padding: 1rem;
+        color: var(--text-light);
+        background-color: var(--bg-dark);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .stats {
-            text-align: center;
-            padding: 0.5rem;
-            font-size: 0.5rem;
-            color: rgba(255, 255, 255, 0.9);
-            position: fixed;
-            left: 0;
-            right: 0;
-            top: 1rem;
-            width: 100%;
-            background: rgba(66, 33, 91, 0.7);
-            z-index: 10;
-            backdrop-filter: blur(5px);
+        font-size: 0.85rem;
+        text-align: center;
+        padding: 0.3rem;
+        color: var(--text-muted);
         }
 
         #word-cloud-container {
-            position: fixed;
-            top: 40px;
-            left: 25%;
-            right: 25%;
-            bottom: 80px;
-            width: 100%;
+        position: absolute;
+        top: 60px;
+        bottom: 60px;
+        left: 0;
+        right: 0;
+        overflow: hidden;
         }
 
         .static-word-cloud {
-            position: fixed;
-            top: 40px;
-            bottom: 80px;
-            right: 0%;
-            left: 0%;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
+        position: relative;
+        width: 100%;
+        height: 100%;
         }
 
         .cloud-word {
-            position: absolute;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            white-space: nowrap;
-            padding: 2px;
-            margin: 1px;
+        position: absolute;
+        font-weight: 500;
+        opacity: 0.85;
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+        white-space: nowrap;
         }
 
         .cloud-word:hover {
-            transform: scale(1.1);
-            z-index: 1000;
+        transform: scale(1.08);
+        opacity: 1;
+        z-index: 10;
         }
 
         .alphabet-filter {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-            padding: 1rem;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            background: rgba(66, 33, 91, 0.9);
-            z-index: 100;
-            backdrop-filter: blur(5px);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--bg-dark);
+        padding: 0.5rem;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .alphabet-filter button {
-            background: var(--purple-200);
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        background: transparent;
+        border: 1px solid var(--accent-soft);
+        color: var(--accent-soft);
+        border-radius: 6px;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: 0.2s ease;
         }
 
-        .alphabet-filter button:hover {
-            background: var(--purple-300);
-            transform: translateY(-2px);
-        }
-
+        .alphabet-filter button:hover,
         .alphabet-filter button.active {
-            background: var(--purple-400);
-            box-shadow: 0 0 10px var(--purple-200);
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
         }
 
         .provider-info {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            display: none;
-            max-width: 500px;
-            width: 90%;
-            color: var(--purple-500);
-            z-index: 1000;
-            backdrop-filter: blur(10px);
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--card-bg);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem 2rem;
+        border-radius: 10px;
+        max-width: 500px;
+        width: 90%;
+        color: white;
+        z-index: 1000;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        display: none;
         }
 
         .provider-info h2 {
-            margin-bottom: 1rem;
-            color: var(--purple-400);
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: var(--accent);
         }
 
         .provider-info p {
-            margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+        margin-bottom: 0.3rem;
         }
 
-        .provider-info p.rank {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #7b00db;
-            margin: 0.5rem 0;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(123, 0, 219, 0.2);
+        .provider-info .rank {
+        font-weight: bold;
+        color: var(--accent-soft);
+        margin: 0.5rem 0;
+        font-size: 1rem;
         }
 
         .close-btn {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--purple-400);
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--text-muted);
+        cursor: pointer;
         }
+
     </style>
 </head>
 <body>
@@ -380,7 +349,7 @@
         word.style.fontSize = `${fontSize}px`;
 
         const colorIndex = Math.floor(Math.random() * colorPalette.length);
-        word.style.color = colorPalette[colorIndex];
+        word.style.color = 'var(--accent-soft)';
 
         // Add to container to get dimensions
         cloudContainer.appendChild(word);
