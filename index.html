@@ -261,9 +261,9 @@
         function initializeAlphabetFilter() {
             const container = document.getElementById('alphabet-filter');
             
-            // Add Top 5 button
+            // Add Top 20 button
             const topButton = document.createElement('button');
-            topButton.textContent = 'Top 5';
+            topButton.textContent = 'Top 20';
             topButton.addEventListener('click', () => filterByTop());
             container.appendChild(topButton);
             
@@ -287,7 +287,7 @@
             currentFilter = 'top';
             document.querySelectorAll('.alphabet-filter button').forEach(btn => {
                 btn.classList.remove('active');
-                if (btn.textContent === 'Top 5') {
+                if (btn.textContent === 'Top 20') {
                     btn.classList.add('active');
                 }
             });
@@ -347,7 +347,7 @@
     container.appendChild(cloudContainer);
 
     let filteredProviders = currentFilter === 'top' 
-        ? [...providers].sort((a, b) => b.attributes.downloads - a.attributes.downloads).slice(0, 5)
+        ? [...providers].sort((a, b) => b.attributes.downloads - a.attributes.downloads).slice(0, 20)
         : providers.filter(provider => 
             currentFilter === '' || provider.attributes.name.toLowerCase().startsWith(currentFilter.toLowerCase())
         );
