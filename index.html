@@ -349,7 +349,7 @@
         word.style.fontSize = `${fontSize}px`;
 
         const colorIndex = Math.floor(Math.random() * colorPalette.length);
-        word.style.color = 'var(--accent-soft)';
+        word.style.color = colorPalette[colorIndex];
 
         // Add to container to get dimensions
         cloudContainer.appendChild(word);
