@@ -1,194 +1,501 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1e1e2f">
     <title>Terraform Providers</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231e1e2f'/%3E%3Ctext x='50%25' y='60%25' text-anchor='middle' font-family='Inter,Arial,sans-serif' font-size='34' font-weight='700' fill='%235a65ea'%3ETf%3C/text%3E%3C/svg%3E">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        :root {
-        --bg-dark: #1e1e2f;
-        --accent: #5a65ea;
-        --accent-soft: #8f95f9;
-        --text-light: #f5f5f5;
-        --text-muted: #cccccc;
-        --card-bg: rgba(255, 255, 255, 0.08);
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        /* ---------- Theme tokens ---------- */
+        :root,
+        [data-theme="dark"] {
+            --bg: #1e1e2f;
+            --bg-elevated: #14141f;
+            --bg-overlay: rgba(255, 255, 255, 0.06);
+            --accent: #5a65ea;
+            --accent-soft: #8f95f9;
+            --accent-strong: #7a83ff;
+            --text: #f5f5f5;
+            --text-muted: #cccccc;
+            --card-bg: rgba(20, 20, 30, 0.85);
+            --border: rgba(255, 255, 255, 0.08);
+            --focus-ring: rgba(143, 149, 249, 0.55);
+            --shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+            --word-shadow-rgb: 255, 255, 255;
+            --backdrop: rgba(0, 0, 0, 0.45);
+            --page-bg: var(--bg);
+        }
+
+        [data-theme="light"] {
+            --bg: #f6f7fb;
+            --bg-elevated: #ffffff;
+            --bg-overlay: rgba(0, 0, 0, 0.04);
+            --accent: #4f56d1;
+            --accent-soft: #5a65ea;
+            --accent-strong: #3b41a8;
+            --text: #1a1a2c;
+            --text-muted: #5a5a6e;
+            --card-bg: rgba(255, 255, 255, 0.96);
+            --border: rgba(0, 0, 0, 0.08);
+            --focus-ring: rgba(90, 101, 234, 0.45);
+            --shadow: 0 18px 40px rgba(60, 60, 110, 0.18);
+            --word-shadow-rgb: 80, 80, 130;
+            --backdrop: rgba(20, 20, 40, 0.32);
+            --page-bg: var(--bg);
+        }
+
+        [data-theme="colorful"] {
+            --bg: #140a2a;
+            --bg-elevated: #1b0f3a;
+            --bg-overlay: rgba(255, 255, 255, 0.08);
+            --accent: #ff5fa2;
+            --accent-soft: #ffb4d4;
+            --accent-strong: #ff77b5;
+            --text: #ffffff;
+            --text-muted: #e0d6ff;
+            --card-bg: rgba(30, 15, 60, 0.85);
+            --border: rgba(255, 255, 255, 0.12);
+            --focus-ring: rgba(255, 95, 162, 0.55);
+            --shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+            --word-shadow-rgb: 255, 255, 255;
+            --backdrop: rgba(0, 0, 0, 0.55);
+            --page-bg:
+                radial-gradient(circle at 15% 20%, rgba(255, 95, 162, 0.35), transparent 45%),
+                radial-gradient(circle at 85% 15%, rgba(90, 101, 234, 0.45), transparent 50%),
+                radial-gradient(circle at 50% 95%, rgba(0, 206, 209, 0.35), transparent 55%),
+                linear-gradient(135deg, #140a2a 0%, #1b0f3a 50%, #2a0e4a 100%);
+        }
+
+        /* ---------- Base ---------- */
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0;
+            min-height: 100%;
         }
 
         body {
-        margin: 0;
-        font-family: 'Inter', sans-serif;
-        background-color: var(--bg-dark);
-        color: var(--text-light);
-        overflow: hidden;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--page-bg);
+            background-attachment: fixed;
+            color: var(--text);
+            overflow: hidden;
+            transition: background-color 0.35s ease, color 0.35s ease;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        a { color: var(--accent-soft); }
+
+        :focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px var(--focus-ring);
+            border-radius: 6px;
+        }
+
+        /* ---------- Header ---------- */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: linear-gradient(180deg, var(--bg-elevated), color-mix(in srgb, var(--bg-elevated) 88%, transparent));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 0.6rem 1rem;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 0.2px;
+            color: var(--text);
+        }
+
+        .brand .dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 12px var(--accent-soft);
         }
 
         h1 {
-        font-size: 1.25rem;
-        text-align: center;
-        padding: 1rem;
-        color: var(--text-light);
-        background-color: var(--bg-dark);
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--text);
         }
 
         .stats {
-        font-size: 0.85rem;
-        text-align: center;
-        padding: 0.3rem;
-        color: var(--text-muted);
+            grid-column: 1 / -1;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            text-align: center;
+            padding-top: 0.15rem;
         }
 
+        /* ---------- Theme switcher ---------- */
+        .theme-switcher {
+            justify-self: end;
+            display: inline-flex;
+            background: var(--bg-overlay);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 3px;
+            gap: 2px;
+        }
+
+        .theme-switcher button {
+            background: transparent;
+            border: 0;
+            color: var(--text-muted);
+            font: inherit;
+            font-size: 0.78rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .theme-switcher button:hover {
+            color: var(--text);
+        }
+
+        .theme-switcher button[aria-pressed="true"] {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 50%, transparent);
+        }
+
+        .theme-switcher .ic {
+            width: 14px; height: 14px;
+            display: inline-block;
+        }
+
+        /* ---------- Word cloud ---------- */
         #word-cloud-container {
-        position: absolute;
-        top: 60px;
-        bottom: 60px;
-        left: 0;
-        right: 0;
-        overflow: hidden;
+            position: absolute;
+            top: 88px;
+            bottom: 64px;
+            left: 0;
+            right: 0;
+            overflow: hidden;
         }
 
         .static-word-cloud {
-        position: relative;
-        width: 100%;
-        height: 100%;
+            position: relative;
+            width: 100%;
+            height: 100%;
         }
 
         .cloud-word {
-        position: absolute;
-        font-weight: 500;
-        opacity: 0.85;
-        transition: all 0.2s ease-in-out;
-        cursor: pointer;
-        white-space: nowrap;
+            position: absolute;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateZ(0) scale(0.92);
+            transition: transform 0.18s ease-out, opacity 0.2s ease-out, filter 0.2s ease;
+            cursor: pointer;
+            white-space: nowrap;
+            user-select: none;
+            will-change: transform, opacity;
+            animation: word-in 0.45s ease-out forwards;
         }
 
-        .cloud-word:hover {
-        transform: scale(1.08);
-        opacity: 1;
-        z-index: 10;
+        .cloud-word:hover,
+        .cloud-word:focus-visible {
+            transform: scale(1.12);
+            opacity: 1;
+            z-index: 10;
+            filter: brightness(1.1);
         }
 
+        @keyframes word-in {
+            from { opacity: 0; transform: translateY(6px) scale(0.9); }
+            to   { opacity: 0.92; transform: translateY(0) scale(1); }
+        }
+
+        /* Light mode benefits from less aggressive glow and slightly stronger weight */
+        [data-theme="light"] .cloud-word {
+            font-weight: 700;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        /* Colorful mode amps up the glow */
+        [data-theme="colorful"] .cloud-word {
+            font-weight: 700;
+        }
+
+        /* ---------- Filter bar ---------- */
         .alphabet-filter {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: var(--bg-dark);
-        padding: 0.5rem;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(0deg, var(--bg-elevated), color-mix(in srgb, var(--bg-elevated) 92%, transparent));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 0.5rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            border-top: 1px solid var(--border);
         }
 
         .alphabet-filter button {
-        background: transparent;
-        border: 1px solid var(--accent-soft);
-        color: var(--accent-soft);
-        border-radius: 6px;
-        padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
-        cursor: pointer;
-        transition: 0.2s ease;
+            background: transparent;
+            border: 1px solid var(--accent-soft);
+            color: var(--accent-soft);
+            border-radius: 8px;
+            padding: 0.38rem 0.75rem;
+            font: 500 0.85rem/1 'Inter', sans-serif;
+            cursor: pointer;
+            transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
+            min-width: 2.2rem;
+        }
+
+        .alphabet-filter button:hover {
+            transform: translateY(-1px);
         }
 
         .alphabet-filter button:hover,
         .alphabet-filter button.active {
-        background: var(--accent);
-        color: white;
-        border-color: var(--accent);
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
         }
 
+        /* ---------- Provider info card ---------- */
         .provider-info {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: var(--card-bg);
-        backdrop-filter: blur(10px);
-        padding: 1.5rem 2rem;
-        border-radius: 10px;
-        max-width: 500px;
-        width: 90%;
-        color: white;
-        z-index: 1000;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -48%) scale(0.96);
+            background: var(--card-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            padding: 1.6rem 2rem 1.4rem;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            max-width: 520px;
+            width: 90%;
+            color: var(--text);
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            display: none;
+            opacity: 0;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .provider-info.open {
+            display: block;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
         }
 
         .provider-info h2 {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-        color: var(--accent);
+            font-size: 1.25rem;
+            margin: 0 2rem 0.4rem 0;
+            color: var(--accent);
+            word-break: break-word;
         }
 
         .provider-info p {
-        font-size: 0.95rem;
-        margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+            margin: 0.35rem 0;
+            color: var(--text);
         }
 
+        #provider-description { color: var(--text-muted); }
+
         .provider-info .rank {
-        font-weight: bold;
-        color: var(--accent-soft);
-        margin: 0.5rem 0;
-        font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent-soft);
+            margin: 0.45rem 0;
+            font-size: 1rem;
+        }
+
+        #provider-source {
+            display: inline-block;
+            margin-top: 0.35rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 8px;
+            background: color-mix(in srgb, var(--accent) 18%, transparent);
+            color: var(--accent-soft);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        #provider-source:hover {
+            background: var(--accent);
+            color: #fff;
         }
 
         .close-btn {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        color: var(--text-muted);
-        cursor: pointer;
+            position: absolute;
+            top: 0.75rem;
+            right: 0.85rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            line-height: 1;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 0.2rem 0.45rem;
+            border-radius: 6px;
+            transition: background 0.2s ease, color 0.2s ease;
         }
 
+        .close-btn:hover {
+            background: var(--bg-overlay);
+            color: var(--text);
+        }
+
+        /* ---------- Mobile ---------- */
+        @media (max-width: 600px) {
+            .topbar { grid-template-columns: 1fr auto; }
+            .brand { display: none; }
+            h1 { font-size: 1rem; text-align: left; }
+            .alphabet-filter button {
+                padding: 0.3rem 0.55rem;
+                font-size: 0.78rem;
+                min-width: 1.9rem;
+            }
+            #word-cloud-container { bottom: 96px; }
+            .theme-switcher button { padding: 0.28rem 0.55rem; font-size: 0.72rem; }
+            .theme-switcher .label { display: none; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .cloud-word { animation: none; opacity: 0.92; }
+            * { transition: none !important; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Terraform Providers</h1>
-        <div class="stats" id="stats"></div>
+        <header class="topbar">
+            <div class="brand"><span class="dot"></span><span>Terraform Providers</span></div>
+            <h1>Top 100</h1>
+            <div class="theme-switcher" role="group" aria-label="Theme">
+                <button type="button" data-theme-btn="light" aria-pressed="false" title="Light theme">
+                    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+                    <span class="label">Light</span>
+                </button>
+                <button type="button" data-theme-btn="dark" aria-pressed="true" title="Dark theme">
+                    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <span class="label">Dark</span>
+                </button>
+                <button type="button" data-theme-btn="colorful" aria-pressed="false" title="Colorful theme">
+                    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="13" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="10" cy="19" r="2.5"/><path d="M12 2a10 10 0 1 0 10 10c0-1.5-1-2-2-2h-3a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1z"/></svg>
+                    <span class="label">Colorful</span>
+                </button>
+            </div>
+            <div class="stats" id="stats"></div>
+        </header>
+
         <div id="word-cloud-container"></div>
         <div class="alphabet-filter" id="alphabet-filter"></div>
-        <div class="provider-info" id="provider-info">
-            <button class="close-btn">&times;</button>
+        <div class="provider-info" id="provider-info" role="dialog" aria-modal="true" aria-labelledby="provider-name">
+            <button class="close-btn" aria-label="Close">&times;</button>
             <h2 id="provider-name"></h2>
             <p id="provider-description"></p>
             <p id="provider-downloads"></p>
             <p id="provider-tier"></p>
-            <p><a id="provider-source" target="_blank"></a></p>
+            <p><a id="provider-source" target="_blank" rel="noopener noreferrer"></a></p>
         </div>
     </div>
 
     <script>
+        /* ---------- Theme switcher ---------- */
+        (function initTheme() {
+            const KEY = 'tf-providers-theme';
+            const validThemes = ['light', 'dark', 'colorful'];
+            const stored = localStorage.getItem(KEY);
+            const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+            const initial = validThemes.includes(stored) ? stored : (prefersLight ? 'light' : 'dark');
+
+            function apply(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                document.querySelectorAll('[data-theme-btn]').forEach(b => {
+                    b.setAttribute('aria-pressed', String(b.dataset.themeBtn === theme));
+                });
+                const meta = document.querySelector('meta[name="theme-color"]');
+                if (meta) {
+                    meta.content = theme === 'light' ? '#f6f7fb' : theme === 'colorful' ? '#140a2a' : '#1e1e2f';
+                }
+            }
+
+            apply(initial);
+
+            document.addEventListener('click', (e) => {
+                const btn = e.target.closest('[data-theme-btn]');
+                if (!btn) return;
+                const theme = btn.dataset.themeBtn;
+                if (!validThemes.includes(theme)) return;
+                localStorage.setItem(KEY, theme);
+                apply(theme);
+                // Re-render the cloud so colours pick up theme-appropriate variants.
+                if (typeof initializeWordCloud === 'function' && Array.isArray(providers) && providers.length) {
+                    initializeWordCloud();
+                }
+            });
+        })();
+
+        /* ---------- App state & palettes ---------- */
         let providers = [];
         let currentFilter = '';
 
-        const colorPalette = [
-            '#FFD700', // Gold
-            '#F0E68C', // Khaki
-            '#E6E6FA', // Lavender
-            '#FFA07A', // Light Salmon
-            '#98FB98', // Pale Green
-            '#87CEEB', // Sky Blue
-            '#DDA0DD', // Plum
-            '#F0FFF0', // Honeydew
-            '#FF69B4', // Hot Pink
-            '#00CED1', // Dark Turquoise
-            '#7FFFD4', // Aquamarine
-            '#FFB6C1', // Light Pink
-            '#00FF7F', // Spring Green
-            '#E0FFFF', // Light Cyan
-            '#FFDAB9'  // Peach Puff
+        // Palette tuned for dark backgrounds.
+        const darkPalette = [
+            '#FFD700', '#F0E68C', '#E6E6FA', '#FFA07A', '#98FB98',
+            '#87CEEB', '#DDA0DD', '#F0FFF0', '#FF69B4', '#00CED1',
+            '#7FFFD4', '#FFB6C1', '#00FF7F', '#E0FFFF', '#FFDAB9'
         ];
+        // Palette tuned for light backgrounds — saturated, AA-friendly.
+        const lightPalette = [
+            '#b8860b', '#8b5a2b', '#5a4ea8', '#c44b2f', '#2e7d32',
+            '#1769aa', '#7b1fa2', '#558b2f', '#c2185b', '#00838f',
+            '#00695c', '#ad1457', '#2e7d32', '#0277bd', '#bf5300'
+        ];
+        // Vivid, neon-leaning palette for colorful mode.
+        const colorfulPalette = [
+            '#FF61D2', '#FE9090', '#FFE53B', '#7AF7E5', '#74F1FF',
+            '#A18CD1', '#FBC2EB', '#84FAB0', '#8FD3F4', '#F093FB',
+            '#FDD835', '#FF6FD8', '#3813C2', '#56CCF2', '#F2994A'
+        ];
+
+        function getPalette() {
+            const theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'light') return lightPalette;
+            if (theme === 'colorful') return colorfulPalette;
+            return darkPalette;
+        }
+
+        // Deterministic color per provider so the same word keeps the same colour
+        // across re-renders (filter changes, resizes, theme switches).
+        function hash(str) {
+            let h = 0;
+            for (let i = 0; i < str.length; i++) {
+                h = ((h << 5) - h + str.charCodeAt(i)) | 0;
+            }
+            return Math.abs(h);
+        }
 
         function formatNumber(num) {
             if (num >= 1e9) return (num / 1e9).toFixed(1) + 'B';
@@ -200,11 +507,11 @@
         function calculateFontSize(downloads, minDownloads, maxDownloads) {
             const minSize = 16;
             const maxSize = 48;
-            
+
             const logMin = Math.log(minDownloads || 1);
             const logMax = Math.log(maxDownloads);
             const logValue = Math.log(downloads);
-            
+
             const scale = (logValue - logMin) / (logMax - logMin);
             return Math.floor(minSize + (maxSize - minSize) * scale);
         }
@@ -222,28 +529,25 @@
             const totalDownloads = providers.reduce((sum, p) => sum + p.attributes.downloads, 0);
             const totalProviders = providers.length;
             document.getElementById('stats').innerHTML = `
-                Total Providers: ${totalProviders} | 
+                Total Providers: ${totalProviders} &nbsp;•&nbsp;
                 Total Downloads: ${formatNumber(totalDownloads)}
             `;
         }
 
         function initializeAlphabetFilter() {
             const container = document.getElementById('alphabet-filter');
-            
-            // Add Top 20 button
+
             const topButton = document.createElement('button');
             topButton.textContent = 'Top 20';
             topButton.addEventListener('click', () => filterByTop());
             container.appendChild(topButton);
-            
-            // Add All button
+
             const allButton = document.createElement('button');
             allButton.textContent = 'All';
             allButton.classList.add('active');
             allButton.addEventListener('click', () => filterByLetter(''));
             container.appendChild(allButton);
-            
-            // Add alphabet buttons
+
             'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(letter => {
                 const button = document.createElement('button');
                 button.textContent = letter;
@@ -281,190 +585,206 @@
 
             const info = document.getElementById('provider-info');
             document.getElementById('provider-name').textContent = provider.attributes['full-name'];
-            
-            // Clear previous rank if exists
+
             const existingRank = info.querySelector('.rank');
-            if (existingRank) {
-                existingRank.remove();
-            }
-            
-            // Add rank information
+            if (existingRank) existingRank.remove();
+
             const rankText = document.createElement('p');
             rankText.className = 'rank';
             rankText.textContent = `Rank #${rank} of ${providers.length}`;
             document.getElementById('provider-name').after(rankText);
-            
-            document.getElementById('provider-description').textContent = 
+
+            document.getElementById('provider-description').textContent =
                 provider.attributes.description || 'No description available';
-            document.getElementById('provider-downloads').textContent = 
+            document.getElementById('provider-downloads').textContent =
                 `Downloads: ${formatNumber(provider.attributes.downloads)}`;
             document.getElementById('provider-tier').textContent = `Tier: ${provider.attributes.tier}`;
-            
+
             const sourceLink = document.getElementById('provider-source');
             sourceLink.href = provider.attributes.source;
-            sourceLink.textContent = 'View Source';
-            
-            info.style.display = 'block';
+            sourceLink.textContent = 'View Source →';
+
+            info.classList.add('open');
         }
 
         function initializeWordCloud() {
-    const container = document.getElementById('word-cloud-container');
-    container.innerHTML = '';
+            const container = document.getElementById('word-cloud-container');
+            container.innerHTML = '';
 
-    const cloudContainer = document.createElement('div');
-    cloudContainer.className = 'static-word-cloud';
-    container.appendChild(cloudContainer);
+            const cloudContainer = document.createElement('div');
+            cloudContainer.className = 'static-word-cloud';
+            container.appendChild(cloudContainer);
 
-    let filteredProviders = currentFilter === 'top' 
-        ? [...providers].sort((a, b) => b.attributes.downloads - a.attributes.downloads).slice(0, 20)
-        : providers.filter(provider => 
-            currentFilter === '' || provider.attributes.name.toLowerCase().startsWith(currentFilter.toLowerCase())
-        );
+            let filteredProviders = currentFilter === 'top'
+                ? [...providers].sort((a, b) => b.attributes.downloads - a.attributes.downloads).slice(0, 20)
+                : providers.filter(provider =>
+                    currentFilter === '' || provider.attributes.name.toLowerCase().startsWith(currentFilter.toLowerCase())
+                );
 
-    const minDownloads = Math.min(...filteredProviders.map(p => p.attributes.downloads));
-    const maxDownloads = Math.max(...filteredProviders.map(p => p.attributes.downloads));
+            const minDownloads = Math.min(...filteredProviders.map(p => p.attributes.downloads));
+            const maxDownloads = Math.max(...filteredProviders.map(p => p.attributes.downloads));
 
-    // Calculate available space
-    const containerWidth = container.offsetWidth;
-    const containerHeight = container.offsetHeight;
-    const centerX = containerWidth / 2;
-    const centerY = containerHeight / 2;
+            const containerWidth = container.offsetWidth;
+            const containerHeight = container.offsetHeight;
+            const centerX = containerWidth / 2;
+            const centerY = containerHeight / 2;
 
-    // Pre-calculate grid for better positioning
-    const grid = [];
-    const gridSize = 20; // Size of each grid cell
-    const cols = Math.floor(containerWidth / gridSize);
-    const rows = Math.floor(containerHeight / gridSize);
-
-    for (let i = 0; i < rows; i++) {
-        grid[i] = new Array(cols).fill(false);
-    }
-
-    filteredProviders.forEach((provider, index) => {
-        const word = document.createElement('div');
-        word.className = 'cloud-word';
-        word.textContent = provider.attributes['full-name'];
-
-        const fontSize = calculateFontSize(provider.attributes.downloads, minDownloads, maxDownloads);
-        word.style.fontSize = `${fontSize}px`;
-
-        const colorIndex = Math.floor(Math.random() * colorPalette.length);
-        word.style.color = colorPalette[colorIndex];
-
-        // Add to container to get dimensions
-        cloudContainer.appendChild(word);
-        const wordWidth = word.offsetWidth;
-        const wordHeight = word.offsetHeight;
-
-        // Calculate position using a spiral pattern with maximum attempts
-        let angle = (index * 137.508) % 360; // Golden angle for better distribution
-        let radius = 0;
-        let attempts = 0;
-        let positioned = false;
-        const maxAttempts = 200; // Limit attempts to prevent infinite loops
-
-        while (!positioned && attempts < maxAttempts) {
-            const x = centerX + (radius * Math.cos(angle * (Math.PI / 180)));
-            const y = centerY + (radius * Math.sin(angle * (Math.PI / 180)));
-
-            // Check if position is within bounds
-            if (x >= 0 && x <= containerWidth - wordWidth &&
-                y >= 0 && y <= containerHeight - wordHeight) {
-
-                // Convert position to grid coordinates
-                const gridX = Math.floor(x / gridSize);
-                const gridY = Math.floor(y / gridSize);
-                const wordGridWidth = Math.ceil(wordWidth / gridSize);
-                const wordGridHeight = Math.ceil(wordHeight / gridSize);
-
-                // Check if area is free in grid
-                let areaFree = true;
-                for (let gy = Math.max(0, gridY - 1); gy < Math.min(rows, gridY + wordGridHeight + 1); gy++) {
-                    for (let gx = Math.max(0, gridX - 1); gx < Math.min(cols, gridX + wordGridWidth + 1); gx++) {
-                        if (grid[gy] && grid[gy][gx]) {
-                            areaFree = false;
-                            break;
-                        }
-                    }
-                    if (!areaFree) break;
-                }
-
-                if (areaFree) {
-                    // Mark area as occupied
-                    for (let gy = gridY; gy < Math.min(rows, gridY + wordGridHeight); gy++) {
-                        for (let gx = gridX; gx < Math.min(cols, gridX + wordGridWidth); gx++) {
-                            if (grid[gy]) grid[gy][gx] = true;
-                        }
-                    }
-
-                    word.style.left = `${x}px`;
-                    word.style.top = `${y}px`;
-                    positioned = true;
-                }
+            const grid = [];
+            const gridSize = 20;
+            const cols = Math.floor(containerWidth / gridSize);
+            const rows = Math.floor(containerHeight / gridSize);
+            for (let i = 0; i < rows; i++) {
+                grid[i] = new Array(cols).fill(false);
             }
 
-            radius += 5;
-            angle += 37; // Add some rotation for better distribution
-            attempts++;
+            const palette = getPalette();
+            const theme = document.documentElement.getAttribute('data-theme');
+
+            filteredProviders.forEach((provider, index) => {
+                const word = document.createElement('div');
+                word.className = 'cloud-word';
+                word.textContent = provider.attributes['full-name'];
+                word.setAttribute('role', 'button');
+                word.setAttribute('tabindex', '0');
+                word.setAttribute('aria-label',
+                    `${provider.attributes['full-name']}, ${formatNumber(provider.attributes.downloads)} downloads`);
+
+                const fontSize = calculateFontSize(provider.attributes.downloads, minDownloads, maxDownloads);
+                word.style.fontSize = `${fontSize}px`;
+
+                // Deterministic colour per provider, stable across renders.
+                const colorIndex = hash(provider.attributes['full-name']) % palette.length;
+                const wordColor = palette[colorIndex];
+                word.style.color = wordColor;
+
+                // Stagger the entrance animation lightly so they don't all pop at once.
+                word.style.animationDelay = `${Math.min(index * 18, 600)}ms`;
+
+                cloudContainer.appendChild(word);
+                const wordWidth = word.offsetWidth;
+                const wordHeight = word.offsetHeight;
+
+                let angle = (index * 137.508) % 360;
+                let radius = 0;
+                let attempts = 0;
+                let positioned = false;
+                const maxAttempts = 200;
+
+                while (!positioned && attempts < maxAttempts) {
+                    const x = centerX + (radius * Math.cos(angle * (Math.PI / 180)));
+                    const y = centerY + (radius * Math.sin(angle * (Math.PI / 180)));
+
+                    if (x >= 0 && x <= containerWidth - wordWidth &&
+                        y >= 0 && y <= containerHeight - wordHeight) {
+
+                        const gridX = Math.floor(x / gridSize);
+                        const gridY = Math.floor(y / gridSize);
+                        const wordGridWidth = Math.ceil(wordWidth / gridSize);
+                        const wordGridHeight = Math.ceil(wordHeight / gridSize);
+
+                        let areaFree = true;
+                        for (let gy = Math.max(0, gridY - 1); gy < Math.min(rows, gridY + wordGridHeight + 1); gy++) {
+                            for (let gx = Math.max(0, gridX - 1); gx < Math.min(cols, gridX + wordGridWidth + 1); gx++) {
+                                if (grid[gy] && grid[gy][gx]) { areaFree = false; break; }
+                            }
+                            if (!areaFree) break;
+                        }
+
+                        if (areaFree) {
+                            for (let gy = gridY; gy < Math.min(rows, gridY + wordGridHeight); gy++) {
+                                for (let gx = gridX; gx < Math.min(cols, gridX + wordGridWidth); gx++) {
+                                    if (grid[gy]) grid[gy][gx] = true;
+                                }
+                            }
+                            word.style.left = `${x}px`;
+                            word.style.top = `${y}px`;
+                            positioned = true;
+                        }
+                    }
+
+                    radius += 5;
+                    angle += 37;
+                    attempts++;
+                }
+
+                if (!positioned) {
+                    word.style.left = `${Math.random() * (containerWidth - wordWidth)}px`;
+                    word.style.top = `${Math.random() * (containerHeight - wordHeight)}px`;
+                }
+
+                // Glow intensity is theme-aware.
+                const shadowIntensity = Math.max(2, fontSize / 4);
+                if (theme === 'colorful') {
+                    word.style.textShadow =
+                        `0 0 ${shadowIntensity}px ${wordColor},
+                         0 0 ${shadowIntensity * 2.5}px ${wordColor},
+                         0 0 ${shadowIntensity * 4}px rgba(255,255,255,0.35)`;
+                } else if (theme === 'light') {
+                    word.style.textShadow = `0 1px 2px rgba(0,0,0,0.08)`;
+                } else {
+                    word.style.textShadow =
+                        `0 0 ${shadowIntensity}px ${wordColor},
+                         0 0 ${shadowIntensity * 2}px rgba(255, 255, 255, 0.3)`;
+                }
+
+                word.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showProviderInfo(provider);
+                });
+                word.addEventListener('dblclick', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showProviderInfo(provider);
+                });
+                word.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        showProviderInfo(provider);
+                    }
+                });
+
+                word.addEventListener('mouseenter', () => {
+                    word.style.transform = 'scale(1.12)';
+                    word.style.zIndex = '1000';
+                });
+
+                word.addEventListener('mouseleave', () => {
+                    word.style.transform = '';
+                    word.style.zIndex = '';
+                });
+            });
         }
 
-        if (!positioned) {
-            // If we couldn't position the word, place it somewhere visible
-            word.style.left = `${Math.random() * (containerWidth - wordWidth)}px`;
-            word.style.top = `${Math.random() * (containerHeight - wordHeight)}px`;
+        function closeInfo() {
+            document.getElementById('provider-info').classList.remove('open');
         }
 
-        const shadowIntensity = Math.max(2, fontSize / 4);
-        word.style.textShadow = `
-            0 0 ${shadowIntensity}px ${colorPalette[colorIndex]},
-            0 0 ${shadowIntensity * 2}px rgba(255, 255, 255, 0.3)
-        `;
-
-        word.addEventListener('dblclick', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            showProviderInfo(provider);
-        });
-
-        word.addEventListener('mouseenter', () => {
-            word.style.transform = 'scale(1.1)';
-            word.style.zIndex = '1000';
-        });
-
-        word.addEventListener('mouseleave', () => {
-            word.style.transform = 'scale(1)';
-            word.style.zIndex = '';
-        });
-    });
-}
-// Click outside handler for provider info
-document.addEventListener('click', (event) => {
+        document.addEventListener('click', (event) => {
             const providerInfo = document.getElementById('provider-info');
             const isClickInside = providerInfo.contains(event.target);
             const isTagCloudItem = event.target.classList.contains('cloud-word');
-            
-            if (!isClickInside && !isTagCloudItem && providerInfo.style.display === 'block') {
-                providerInfo.style.display = 'none';
+
+            if (!isClickInside && !isTagCloudItem && providerInfo.classList.contains('open')) {
+                closeInfo();
             }
         });
 
-        // Prevent clicks inside provider info from bubbling up
         document.getElementById('provider-info').addEventListener('click', (event) => {
             event.stopPropagation();
         });
 
-        // Close button handler
-        document.querySelector('.close-btn').addEventListener('click', () => {
-            document.getElementById('provider-info').style.display = 'none';
+        document.querySelector('.close-btn').addEventListener('click', closeInfo);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeInfo();
         });
 
-        // Handle window resize
         window.addEventListener('resize', () => {
             clearTimeout(window.resizeTimeout);
             window.resizeTimeout = setTimeout(initializeWordCloud, 200);
         });
 
-        // Initial load
         window.addEventListener('load', loadData);
     </script>
 </body>
